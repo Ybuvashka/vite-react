@@ -32,7 +32,7 @@ const Landing = () => {
           <Link to='/register' className="btn register-link">
             Register
           </Link>
-          <Link to='/.login' className="btn">
+          <Link to='/login' className="btn">
             login
           </Link>
         </div>
