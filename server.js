@@ -4,7 +4,6 @@ import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import "express-async-errors";
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
-import { validateTest } from "./middleware/validationMiddleware.js";
 
 dotenv.config();
 const app = express();
@@ -20,16 +19,6 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("hello world");
 });
-
-app.post(
-  "/api/v1/test",
-  
-  validateTest,
-  (req, res) => {
-    const { name } = req.body;
-    res.json({ message: `hello ${name}` });
-  }
-);
 
 app.use("/api/v1/jobs", jobRouter);
 
