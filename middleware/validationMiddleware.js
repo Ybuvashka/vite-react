@@ -21,7 +21,7 @@ const withValidationErrors = (validateValues) => {
           throw new NotFoundError(errorMessages)
         }
         if (errorMessages[0].startsWith('not authorized')) {
-          throw new UnauthorizedError('not authorized to use thiis route')
+          throw new UnauthorizedError('not authorized to use this route')
         }
         throw new BadRequestError(errorMessages)
       }
@@ -52,8 +52,8 @@ export const validateIdParam = withValidationErrors([
 
     const isAdmin = req.user.role === 'admin'
     const isOwner = req.user.userId === job.createdBy.toString()
-    if (!isAdmin && isOwner)
-      throw new UnauthorizedError('not authorized to use thiis route')
+    if (!isAdmin && !isOwner)
+      throw new UnauthorizedError('not authorized to use this route')
   }),
 ])
 
